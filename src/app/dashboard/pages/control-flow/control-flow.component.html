@@ -1,0 +1,59 @@
+<app-title title="Control Flow!" withShadow />
+<section class="grid grid-cols-1 md:grid-cols-2 gap-3">
+    <div class="bg-white rounded shadow p-10">
+        <h2 class="text-2xl font-bold mb-5">
+            if: {{ showContent() }}
+        </h2>
+        <button class="p-2 bg-blue-500 text-white rounded"
+            (click)="toggleContent()">
+            Click me!
+        </button>
+        @if (showContent()) {
+            <p>Hola mundo</p>
+        }@else {
+            <p>*******</p>
+        }
+    </div>
+    <!-- @switch -->
+    <div class="bg-white rounded shadow p-10">
+        <h2 class="text-3xl">{{ grade() }}</h2>
+        @switch (grade()) {
+            @case ('A') {
+                <p>Arriba de 90</p>
+            }
+            @case ('B') {
+                <p>Bueno (mayor a 70 y menor a 90)</p>
+            }
+            @case ('F') {
+                <p>Reprobado</p>
+            }
+            @default {
+                <p>Notas extrañas</p>
+            }
+        }
+    </div>
+    <!-- @for -->
+    <div class="bg-white rounded shadow p-10">
+        <ul>
+            @for (item of frameworks(); track $index; let i=$index, first = $first, 
+            last = $last, even = $even, odd = $odd, count = $count) {
+                <li [class] = "{
+                    'bg-amber-300': even && !first && !last,
+                    'bg-blue-300': odd && !first && !last,
+                    'bg-red-300': first || last,
+                }">
+                    {{ i+1 }}/{{ count}} - {{ item }}
+                </li>
+            }
+        </ul>
+    </div>
+    <div class="bg-white rounded shadow p-10">
+        <ul>
+            @for (item of frameworks2(); track item; let i = $index;) {
+                <li>{{ item }}</li>
+            }@empty {
+                <li>No hay frameworks agregados</li>
+            }
+        </ul>
+    </div>
+</section>
