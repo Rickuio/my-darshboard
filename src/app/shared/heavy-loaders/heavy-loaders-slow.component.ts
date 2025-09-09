@@ -5,7 +5,7 @@ import { Component, Input } from '@angular/core';
   selector: 'app-heavy-loaders-slow',
   imports: [NgClass],
   template: `
-    <section [ngClass]="['w-full h-[600px]', cssClass]">
+    <section [ngClass]="['w-full h-[180px]', cssClass]">
       Heavy Loader Slow
     </section>
   `
@@ -17,7 +17,7 @@ export class HeavyLoadersSlowComponent {
   constructor() {
     console.log('HeavyLoader Component');
     const start = Date.now();
-    while( Date.now() - start < 3000) {
+    while( Date.now() - start < 2500) {
       console.log('Termino bloqueo!')
     }
   }
