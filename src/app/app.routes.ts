@@ -21,14 +21,19 @@ export const routes: Routes = [
                 loadComponent: () => import('./dashboard/pages/defer-options/defer-options.component')
             },
             {
-                path: 'defer-views',
-                title: 'Defer Views',
-                loadComponent: () => import('./dashboard/pages/defer-views/defer-views.component')
-            },
-            {
                 path: 'user/:id',
                 title: 'User View',
                 loadComponent: () => import('./dashboard/pages/user/user.component')
+            },
+            {
+                path: 'view-transition-1',
+                title: 'View Transition 1',
+                loadComponent: () => import('./dashboard/pages/view-transition/view-transition1.component')
+            },
+            {
+                path: 'view-transition-2',
+                title: 'View Transition 2',
+                loadComponent: () => import('./dashboard/pages/view-transition/view-transition2.component')
             },
             {
                 path: 'user-list',
@@ -36,9 +41,9 @@ export const routes: Routes = [
                 loadComponent: () => import('./dashboard/pages/users/users.component')
             },
             {
-                path: 'view-transition',
-                title: 'View Transition',
-                loadComponent: () => import('./dashboard/pages/view-transition/view-transition.component')
+                path: 'defer-views',
+                title: 'Defer Views',
+                loadComponent: () => import('./dashboard/pages/defer-views/defer-views.component')
             },
             {
                 path: '',
