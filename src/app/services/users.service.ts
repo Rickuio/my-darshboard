@@ -1,7 +1,7 @@
 import { computed, inject, Injectable, signal } from '@angular/core';
-import { User, UsersResponse } from '../interfaces/req-res';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { delay } from 'rxjs';
+import type { User, UserResponse, UsersResponse } from '../interfaces/req-res';
+import { delay, map } from 'rxjs';
 
 interface State {
   users: User[];
@@ -39,6 +39,22 @@ export class UsersService {
           users: res.data,
         });
       }
+    );
+  }
+
+  getUserById(id: string) {
+    const url = `https://reqres.in/api/users/${id}`;
+    const headers = new HttpHeaders({
+      'x-api-key': 'reqres-free-v1'
+    });
+    return this.http.get<UserResponse>(url, {headers})
+    .pipe(
+      delay(1500),
+      map (resp => resp.data)
+      // map( resp => {
+      //   const infoUser = resp.data;
+      //   console.log({infoUser});
+      // })
     );
   }
 
